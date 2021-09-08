@@ -73,10 +73,10 @@ resource "aws_launch_configuration" "launch_config" {
 ############################################################################
 # Role Policy for SSM allows you to connect with session manager
 ############################################################################
-AmazonEC2RoleforSSM
-CloudWatchAgentAdminPolicy
-CloudWatchAgentServerPolicy
-AmazonSSMManagedInstanceCore
+["arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore",
+"arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy",
+"arn:aws:iam::aws:policy/AWSCodeCommitFullAccess",
+"arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess"]
 
 ############################################################################
 # aws systems manager 
