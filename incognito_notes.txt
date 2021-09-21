@@ -123,3 +123,50 @@ with `stacker destroy`:
 pipenv run stacker destroy -ft -r us-west-1 common-us-west-1.env stacker_config.yaml
 pipenv run stacker destroy -ft -r REGION ENVFILE YAMLFILE
 
+#######################################################################
+# Windows One liners
+#######################################################################
+* Open power shell *
+Get-PSDrive - to list out drives
+Get-Volume C - to get specific drive space
+
+#######################################################################
+# git clone codecommit.  
+#######################################################################
+
+Just need to make sure iso-login first, then view their code commit page and do git clone
+
+
+#######################################################################
+# On call contact list
+#######################################################################
+AAG
+james redd (jredd@jrdesignhero.com, JRedd@aag.com)
+RA
+https://research.atlassian.net/wiki/spaces/IT/pages/805699703/Contact+Information
+    charles
+    chris
+    aaron (not to be confused with aaron from BAL)
+    file checks
+    https://research.atlassian.net/wiki/spaces/IT/pages/1035403425/File+Monitoring+PIMCO
+        a call to the data team
+        mail to everyone
+BAL
+https://corpinfollc.atlassian.net/wiki/spaces/BALG/pages/521961684
+    Juan Teran (jteran@balglobal.com)
+    Abraham Oyewole (aoyewole@balglobal.com)
+    Brandon Rogers (brogers@balglobal.com)
+    Chris Nash (cnash@balglobal.com)
+    Tim Taylor (titaylor@balglobal.com)
+PHP
+    Jordan Miller (jordan.miller@phtech.com)
+YVR
+    Jason Williams <Jason_Williams@yvr.ca>
+    Paul Lovett <Paul_Lovett@yvr.ca>
+    Jae Chong <jae_chong@yvr.ca>
+    Allan Co <Allan_Co@yvr.ca>
+CAPSANA
+https://corpinfollc.atlassian.net/wiki/spaces/CAPS/overview
+    JP -   jpbelanger@capsana.ca
+    Clement - cvial@capsana.ca
+    Andrea - agrullon@capsana.ca
