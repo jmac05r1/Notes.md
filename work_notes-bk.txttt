@@ -1,0 +1,118 @@
+###### Onica-sso #####
+
+sso-list = list out accounts
+sso-login (account) = logs  you into account
+sso conosle = logs you into console
+
+#### runway ####
+runway plan
+runway deploy
+runway destroy
+
+##### terraform #####
+terraform init 
+terraform plan "see before it deploys"
+terraform apply "actually deploy"
+
+##### github commands #####
+tpyical work flow 
+making changes *locally*
+staging changes
+commiting changes
+
+###############################
+# creating git from local to remote
+###############################
+    git init && git checkout -b NAME (in local directory to initialize)
+    touch README.md
+    git commit -m 'NAME'
+    git remote add origin https://github.com/jmac05r1/NAME.git
+    git branch -M main #NAME OF BRANCH
+    git push -u origin main #PUSH FILES FROM LOCAL TO GIT
+
+###############################
+# push to multiple remotes
+###############################
+    # Add remote 1: GitHub.
+        git remote add origin https://jmacias4240@bitbucket.org/corpinfo/jmacias-devops.git
+    # Add remote 2: BitBucket.
+        git remote add upstream https://github.com/jmac05r1/fsproject.git
+
+    # Create a new remote called "all" with the URL of the primary repo.
+        git remote add all https://jmacias4240@bitbucket.org/corpinfo/jmacias-devops.git
+    # Re-register the remote as a push URL.
+        git remote set-url --add --push all https://github.com/jmac05r1/fsproject.git
+    # Add a push URL to a remote. This means that "git push" will also push to this git URL.
+        git remote set-url --add --push all https://jmacias4240@bitbucket.org/corpinfo/jmacias-devops.git  
+                    
+    ###### reference in case of help https://jigarius.com/blog/multiple-git-remote-repositories ####    
+
+  
+###############################
+# IAM roles can be put into autoscaling group
+# with IAM_INSTANCE_PROFILE (I usually create a generic poicy and then add correct polices from console while removein generic policy)
+# this keeps the role in the auto launch config anytime a new serve is spun up (need to find how to insert correct policy at start)
+###############################
+### Launch Configuraiton ###
+resource "aws_launch_configuration" "launch_config" {
+  name_prefix                 = var.launch-config-name
+  image_id                    = data.aws_ami.amibase.id
+  instance_type               = var.instance-type
+  key_name                    = var.instance-key-name
+  iam_instance_profile        = "${aws_iam_instance_profile.ec2jmac_profile.name}" <--------
+  security_groups             = ["${aws_security_group.ec2-rule.id}"]
+  associate_public_ip_address = false
+
+###############################
+# Role Policy for SSM allows you to connect with session manager
+###############################
+AmazonEC2RoleforSSM
+CloudWatchAgentAdminPolicy
+CloudWatchAgentServerPolicy
+AmazonSSMManagedInstanceCore
+
+###############################
+# aws systems manager 
+###############################
+install cloudwatch package from console w/run command using name as " AmazonCloudWatchAgent"
+
+
+###############################
+# cloud watchagent install from console/ssh/session manager
+###############################
+https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/install-CloudWatch-Agent-on-first-instance.html
+Log into instance run (yum install amazon-cloudwatch-agent)
+
+configure .json file usually in "/opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-wizard
+REFERENCE >> cloudwatch.txt
+
+fetch file
+sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -s -c file:config.json
+REFERENCE >> cloudwatch.txt 
+
+###############################
+# Testing upload cloudwatch agent to configuraiton file to system manager
+###############################
+Uploading the CloudWatch agent configuration file to Systems Manager Parameter Store
+If you plan to use the SSM Agent to install the CloudWatch agent on servers, after you manually edit the CloudWatch agent configuration file, you can upload it to Systems Manager Parameter Store. To do so, use the Systems Manager put-parameter command.
+To be able to store the file in Parameter Store, you must use an IAM role with sufficient permissions. For more information, see Create IAM roles and users for use with the CloudWatch agent.
+Use the following command, where parameter name is the name to be used for this file in Parameter Store and configuration_file_pathname is the path and file name of the configuration file that you edited.
+(((((aws ssm put-parameter --name "parameter name" --type "String" --value file://configuration_file_pathname)))))
+
+
+#### STACKER ####
+#### pipenv install is currently installed on mac (did it manual) ####
+pip3 install stacker #inside folder to create stack inside directory
+pipenv run stacker build -it -r us-west-2 common.env stack-definition.yaml
+pipenv run stacker build -it -r REGION FILENAME.EVN STACK.yaml
+
+#### destory stacks ####
+## Cleanup
+
+Once you are finished with this example, you can remove the stack
+with `stacker destroy`:
+
+```bash
+pipenv run stacker destroy -ft -r us-west-1 common-us-west-1.env stacker_config.yaml
+pipenv run stacker destroy -ft -r REGION ENVFILE YAMLFILE
+
