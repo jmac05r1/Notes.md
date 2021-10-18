@@ -170,3 +170,15 @@ https://corpinfollc.atlassian.net/wiki/spaces/CAPS/overview
     JP -   jpbelanger@capsana.ca
     Clement - cvial@capsana.ca
     Andrea - agrullon@capsana.ca
+
+BAL uses ADFS setup to log into
+
+#######################################################################
+# Logs into healthx shared services 
+#######################################################################
+
+sso healthx-master
+source healthx shared .sh
+aws sts get-caller-identity (verify correct account to work on)
+aws ssm start-session --target INSTANCEID --document-name AWS-StartPortForwardingSession --parameters "localPortNumber=8000,portNumber=3389"
+((connect to isntance with RDP )) get PW from parameter store (correct group/name)
