@@ -173,12 +173,16 @@ https://corpinfollc.atlassian.net/wiki/spaces/CAPS/overview
 
 BAL uses ADFS setup to log into
 
-#######################################################################
-# Logs into healthx shared services 
-#######################################################################
 
-sso healthx-master
-source healthx shared .sh
-aws sts get-caller-identity (verify correct account to work on)
-aws ssm start-session --target INSTANCEID --document-name AWS-StartPortForwardingSession --parameters "localPortNumber=8000,portNumber=3389"
-((connect to isntance with RDP )) get PW from parameter store (correct group/name)
+#######################################################################
+# terraform cloud 
+#######################################################################
+need to make username - jmacias424 
+                        e-mail : jaime.macias@rackspace.com
+
+#######################################################################
+# search for tickets in jira
+#######################################################################
+https://nbdevs.atlassian.net/issues/?jql=project%20in%20(HX%2C%20MDT)%20AND%20summary%20~%20%22customer%20communication%22
+ 
+ - use (project = "HX" and summary ~ "customer communication") with JQL search
