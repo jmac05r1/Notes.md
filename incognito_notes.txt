@@ -186,3 +186,9 @@ need to make username - jmacias424
 https://nbdevs.atlassian.net/issues/?jql=project%20in%20(HX%2C%20MDT)%20AND%20summary%20~%20%22customer%20communication%22
  
  - use (project = "HX" and summary ~ "customer communication") with JQL search
+
+ #######################################################################
+# Linux Notes
+#######################################################################
+ fallocate -l 10G name.img
+ 
