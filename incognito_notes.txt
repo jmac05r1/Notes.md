@@ -54,6 +54,10 @@ commiting changes
                     
     ###### reference in case of help https://jigarius.com/blog/multiple-git-remote-repositories ####    
 
+.ssh config is set up with mulitple github accounts 
+when using ssh to push need to match git@github.com-###### thats in config file
+
+
   
 ############################################################################
 # IAM roles can be put into autoscaling group
