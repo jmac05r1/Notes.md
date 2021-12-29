@@ -299,3 +299,9 @@ Device         Boot Start        End    Sectors Size Id Type
 #######################################################################
 need to install exfat packages
 apt install exfat-fuse exfat-utils
+
+#######################################################################
+# certbot notes
+#######################################################################
+certbot certonly -d owncloud.jmactx.com,www.owncloud.jmactx.com 
+Currently needs to wait a week due to continues attempts to renew.
