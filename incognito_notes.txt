@@ -303,5 +303,4 @@ apt install exfat-fuse exfat-utils
 #######################################################################
 # certbot notes
 #######################################################################
-certbot certonly -d owncloud.jmactx.com,www.owncloud.jmactx.com 
-Currently needs to wait a week due to continues attempts to renew.
+certbot certonly -d owncloud.jmactx.com,www.owncloud.jmactx.com ((need to restart apache once complete))
