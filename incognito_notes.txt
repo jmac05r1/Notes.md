@@ -134,6 +134,13 @@ pipenv run stacker destroy -ft -r REGION ENVFILE YAMLFILE
 Get-PSDrive - to list out drives
 Get-Volume C - to get specific drive space
 
+Once have extended in AWS-console
+Run
+"rescan" | diskpart > Get-PartitionSupportedSize -DriveLetter DRIVELETTER >  Resize-Partition -DriveLetter DRIVELETTER -Size SIZE 
+                                                                          > or if wanting full size
+                                                                          > Resize-Partition -DriveLetter DRIVELETTER -Size $(Get-PartitionSupportedSize -DriveLetter DRIVELETTER).SizeMax
+
+
 #######################################################################
 # git clone codecommit.  
 #######################################################################
@@ -301,6 +308,6 @@ need to install exfat packages
 apt install exfat-fuse exfat-utils
 
 #######################################################################
-# certbot notes
+# certbot notes (renew SSL cert )
 #######################################################################
 certbot certonly -d owncloud.jmactx.com,www.owncloud.jmactx.com ((need to restart apache once complete))
