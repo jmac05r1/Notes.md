@@ -311,3 +311,7 @@ apt install exfat-fuse exfat-utils
 # certbot notes (renew SSL cert )
 #######################################################################
 certbot certonly -d owncloud.jmactx.com,www.owncloud.jmactx.com ((need to restart apache once complete))
+
+#######################################################################
+#
+#######################################################################
