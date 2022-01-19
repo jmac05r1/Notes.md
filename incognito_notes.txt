@@ -37,6 +37,10 @@ commiting changes
     git branch -M main #NAME OF BRANCH
     git push -u origin main #PUSH FILES FROM LOCAL TO GIT
 
+    git remote add origin git@github.com-onicagithub:##SSH URL####
+
+    git branch -a # shows you the branches & remote branches conneted to 
+
 ############################################################################
 # push to multiple remotes (github)
 ############################################################################
