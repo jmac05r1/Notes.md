@@ -317,5 +317,26 @@ apt install exfat-fuse exfat-utils
 certbot certonly -d owncloud.jmactx.com,www.owncloud.jmactx.com ((need to restart apache once complete))
 
 #######################################################################
-#
+# Cross refrence stacks using output
 #######################################################################
+Source output example:
+  Outputs:
+    AdminPatchRoleArn:
+    Description: ARN of Role
+    Export:
+      Name: AdminPatchRoleArn
+    Value: !GetAtt ['AdminPatchRole', 'Arn']  # yamllint disable-line rule:line-length
+  
+Destination: 
+  Has to have the srouce referenced 
+  stacks:
+  ec2-patching-role:
+    template_path: ../../08-patch-manager/cloudformation/patching-iam-role.yaml
+    variables:
+      <<: *common_parameters
+      Region: ${region}
+
+       actual line is ######  IamRole: ${output ec2-patching-role::AdminPatchRoleArn}
+                                        (output is the name of the resource from stack "ec2-patching-role")
+                                        (then the name of the actualy output NOT the name of "name")
+
