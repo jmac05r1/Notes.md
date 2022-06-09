@@ -12,9 +12,14 @@ runway plan
 runway deploy
 runway destroy
 
-pip install markupsafe==2.0.1 "fixed marksafe error"
+pipenv install markupsafe "==2.0.1" #  "fixed marksafe error"
+or 
+pipenv install markupsafe==2.0.1
+pipenv install markupsafe="==2.0.1"
 (removed runway from local machine) 
 error fixes runway virtual env
+
+pipenv sends command to pipshell like mysql
 
 #######################################################################
 # Terraform
@@ -332,3 +337,43 @@ Destination:
 pipenv install --skip-lock
 pipenv install
 
+#######################################################################
+# finding outputs from aws console for security groups
+#######################################################################
+look into s3 > correct bucket > find whats needed and use "open" feature at top of page
+
+#######################################################################
+# chrome profile & alfred configuration
+#######################################################################
+ls -lastrh ~/Library/Application\ Support/Google/Chrome # view profiles created
+open -n -a "Google Chrome" --args --profile-directory="Profile 11" # alfred profile 
+
+#######################################################################
+# Python variables when referencing (path)
+#######################################################################
+runway stack in "runway"
+path: hooks.s3_create_upload.create_upload
+(FOLDER.FILE.FUNCTIONNAME)
+
+.ENV file will have its variables in place for runway stack
+
+#######################################################################
+# Waf Creation using template and local files instead of URL from default template
+#######################################################################
+Need to find local files to download 
+https://${S3Bucket}.s3.amazonaws.com/${KeyPrefix}/aws-waf-security-automations-webacl.template
+
+${KeyPrefix} found in mappings of template (MAPPINGS IS KEY)
+aws-waf-security-automations/v3.2.0
+
+Mappings:
+    SourceCode:
+        General:
+            TemplateBucket: 'solutions-reference'
+            SourceBucket: 'solutions'
+            KeyPrefix: 'aws-waf-security-automations/v3.2.0'
+
+(((((S3Bucket: !FindInMap ["SourceCode", "General", "TemplateBucket"]))))))
+(((((KeyPrefix: !FindInMap ["SourceCode", "General", "KeyPrefix"])))))            
+
+Example: https://solutions-reference.s3.amazonaws.com/aws-waf-security-automations/v3.2.0/aws-waf-security-automations-webacl.template <---- is what to be downloaded
